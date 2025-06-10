@@ -46,7 +46,7 @@ public:
         Age = age;
         Salary = salary;
     }
-    void work() {
+    virtual void work() {
         std::cout<<Name<<" is checking email, task backlog, performing task..."<<std::endl;
     }
 };
@@ -89,7 +89,10 @@ int main() {
     Developer dev("ABA", "Darachhat", 19, 2000, "Laravel");
 
     Teacher teacher("ABA", "Darachhat", 19, 2000, "Web Development");
-    dev.work();
-    teacher.work();
+
+    Employee* e1 = &dev;
+    Employee* e2 = &teacher;
+    e1->work();
+    e2->work();
 
 }
