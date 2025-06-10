@@ -1,15 +1,26 @@
 #include <iostream>
 using std::string;
 
-class Employee {
+class AbstractEmployee{
+    virtual void AskForPromotion() = 0;
+};
+
+class Employee:AbstractEmployee { 
 private:
     int tax = 10;
     string Company;
-    string Name;
     int Age;
     int Salary;
-
+protected:
+    string Name;
 public:
+    void AskForPromotion(){
+        if(Age>30)
+            std::cout<<Name<<" got promotion!" <<std::endl;
+        else
+            std::cout<<Name<<" no promotion for you."<<std::endl;
+        
+    }
     void setCompany(string company) { Company = company; }
     string getCompany() { return Company; }
 
@@ -61,7 +72,7 @@ public:
     }
 
     void prepareLesson() {
-        std::cout << getName() << " is preparing a " << Subject << " lesson" << std::endl;
+        std::cout << Name<< " is preparing a " << Subject << " lesson" << std::endl;
     }
 };
 
